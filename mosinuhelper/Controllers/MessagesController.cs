@@ -57,7 +57,7 @@ namespace mosinuhelper
                     }
                     else // Name was provided
                     {
-                        strReplyMessage.Append($"{strUserName}, You said: {activity.Text}");
+                        strReplyMessage.Append($"{strUserName}, tell me more about {activity.Text}");
                     }
                 }
                 // Save BotUserData
@@ -115,6 +115,9 @@ namespace mosinuhelper
             else if (message.Type == ActivityTypes.Typing)
             {
                 // Handle knowing tha the user is typing
+                ConnectorClient connector = new ConnectorClient(new Uri(message.ServiceUrl));
+                Activity replyMessage = message.CreateReply("I see you are typing, I will wait.");
+                return replyMessage;
             }
             else if (message.Type == ActivityTypes.Ping)
             {
@@ -141,24 +144,4 @@ namespace mosinuhelper
         public Scores scores { get; set; }
     }
 
-    public static class Utilities
-    {
-        public static async Task<string> CheckEmotion(string query)
-        {
-            var client = new HttpClient(); var queryString = HttpUtility.ParseQueryString(string.Empty); string responseMessage = string.Empty;
-            // Request headers         
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "YOUR SUBSCRIPTION KEY");
-            // Request parameters         
-            var uri = "https://api.projectoxford.ai/emotion/v1.0/recognize";
-            HttpResponseMessage response = null;
-            byte[] byteData = Encoding.UTF8.GetBytes("{ 'url': '" + query + "' }");
-            using (var content = new ByteArrayContent(byteData))
-            {
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                response = await client.PostAsync(uri, content).ConfigureAwait(false);
-            }
-            string responseString = await response.Content.ReadAsStringAsync();
-            EmotionResult[] faces = JsonConvert.DeserializeObject </ string >;
-         }
-    }
 }
