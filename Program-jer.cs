@@ -1,12 +1,12 @@
 ﻿/* This is for AMD only, is not to be shared
-If I catch you fuckers giving this code out you will be castrated
-do NOT let ANON get hands on this - mosinu
+This is meant to be used to burn down scammer
+call centers- mosinu
 
 I marked few places i need to config this so I do not have to keep giving 
 code away also need to add a way to do this with google and make source random.
-Right now this will do about 30 calls per second...if i threat it i can double that if
+Right now this will do about 30 calls per second...if i thread it i can double that if
 I can add google to twilo, lets me bounce between them, keep from setting off alarms. 
-twilio catches on fast
+twilio catches on fast and will ban you
 */
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace CallBomber
     {
         /* really need to make this a config but im to lazy atm, one of you others fix this 
         none of info below is valid replace with own shit*/
-        public static string accountSid = "somethinghere";
+        public static string accountSid = "ACCOUNT ID HERE";
         public static string authtoken = "md5 string here";
         /* these are numbers we show on caller id, should be in config also 
         currently these are fbi, us marshals, cia, nsa, dea and irs
